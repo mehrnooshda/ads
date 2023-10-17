@@ -1,0 +1,47 @@
+{
+  "en":{
+    "0000":"Operation successful!",
+    "0101":"Permission Denied!",
+    "0400":"Operation failed!",
+    "0202":"OTP Validation Not Valid",
+    "0204":"No result found!",
+    "1001":"Input Validation Error, please check your parameters with document",
+    "1002":"Unknown Error",
+    "1003": "Connection Error",
+    "1005": "Form Not Found Error",
+    "1006": "Please Provide all required fields",
+    "2005": "Shahkar Validation Error",
+    "2006": "Shahkar Validation Error",
+    "40101": "Authentication Error",
+    "40102": "Authentication Error, You cannot retry for a while . your ip is limited.",
+    "40103": "Authentication Error, Your token has been expired. please Login again.",
+    "6000": "Email added to news letter successfully",
+    "6002": "You are already registered in Noafarin newsletter",
+    "7001": "Something went wrong, please try again",
+    "6001": "Error in registering in news letter",
+    "5001": "Something went wrong, please try again"
+
+  },
+  "fa":{
+    "0000":"عملیات با موفقیت انجام شد",
+    "0101":"شما به این صفحه دسترسی ندارید!",
+    "0400":"عملیات ناموفق!",
+    "0202":"کد یکبار مصرف به درستی وارد نشده است!",
+    "0204":"موردی یافت نشد",
+    "1001":"ورودی های خود را کنترل کنید.",
+    "1002":"خطایی رخ داده است.",
+    "1003": "خطای ارتباط",
+    "1005": "فرم یافت نشد",
+    "1006": "لطفا تمامی ورودی های خواسته شده را پر کنید.",
+    "2005": "کد ملی با مالک شماره تلفن همراه تطابق ندارد.",
+    "2006": "کد ملی خود را به درستی وارد نمایید.",
+    "40101": "خطای احراز هویت",
+    "40102": "خطای احراز هویت ! بدلیل تلاش برای ورود نا موفق، شما برای مدت کوتاهی نمیتوانید به سایت وارد شوید !‌",
+    "40103": "خطای احراز هویت!‌ توکن شما منقضی شده است.",
+    "6000": " شما با موفقیت در خبرنامه ایزان نوآفرین عضو شدید! ",
+    "6002": "شما قبلا در خبرنامه ایران نوآفرین عضو شده اید.",
+    "7001": "خطایی رخ داد. لطفا مجدادا تلاش کنید.",
+    "6001": "خطا در عضویت در خبرنامه!",
+    "5001": "خطایی رخ داد. لطفا مجدادا تلاش کنید."
+  }
+}
