@@ -28,6 +28,9 @@ def create_app():
         response.status_code = error.status_code
         return response
 
+    @api_v1.before_request
+    def relogin_if_needed():
+        pass
     @api_v1.after_request
     def set_auth_header(response):
         response.headers['Access-Control-Expose-Headers'] = "Authorization"
@@ -44,10 +47,10 @@ def create_app():
 
         response.headers['Cache-Control'] = 'no-cache'
 
-        prefix = 'api_v3.'
-        endpoint = request.endpoint.replace(prefix, '')
-        # if endpoint in openapi:
-        #     response.headers['Is-Open-Api'] = True
+        # prefix = 'api_v1.'
+        # endpoint = request.endpoint.replace(prefix, '')
+        # # if endpoint in openapi:
+        # #     response.headers['Is-Open-Api'] = True
         return response
 
     app.register_blueprint(api_v1, url_prefix='/api/v1')

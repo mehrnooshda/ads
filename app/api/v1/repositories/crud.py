@@ -3,22 +3,22 @@ import json
 from flask import request, jsonify
 
 from app.services.app_exceptions import CustomException, AdNotFound
+from app.services.authorization import authorize
 from app.services.crud_helper import create_ad_on_db, update_ad_on_db, delete_ad_on_db
 
 
+@authorize
 def add_ad():
     action = 'POST_AD'
     try:
         req_data = json.loads(request.data)
     except Exception as e:
         raise CustomException(' {}:درخواست نامعتبر است'.format(e), 406)
-    print('req_data', req_data)
     try:
         insert_query_response = create_ad_on_db(
             text=req_data['text'],
             user_id=req_data['user_id']
         )
-        print('insert_query_response', insert_query_response)
         if insert_query_response is not None:
             response_message = f"Ad posted successfully: the post is: {req_data['text']}"
             return jsonify({"message": response_message, "ad_id": insert_query_response}), 200
@@ -26,6 +26,7 @@ def add_ad():
         raise CustomException(' {}:could not post ad'.format(e), 406)
 
 
+@authorize
 def edit_ad(ad_id):
     action = 'EDIT_AD'
     try:
@@ -50,6 +51,7 @@ def edit_ad(ad_id):
     return jsonify({"message": message})
 
 
+@authorize
 def delete_ad(ad_id):
     action = 'delete_member'
     try:
@@ -72,7 +74,7 @@ def delete_ad(ad_id):
         return jsonify(message=str(result))
 
 
-
+@authorize
 def add_cm():
     pass
 
