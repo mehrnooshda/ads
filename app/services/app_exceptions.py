@@ -83,3 +83,7 @@ class FormNotFound(CustomException):
 class ProvideAllFields(CustomException):
     def __init__(self, message=get_message('1006')):
         CustomException.__init__(self, message, error_code=1006, status_code=422)
+
+class AdNotFound(CustomException):
+    def __init__(self, message=get_message('1007')):
+        CustomException.__init__(self, message, error_code=1007, status_code=404)
