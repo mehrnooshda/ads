@@ -3,7 +3,7 @@ import json
 from flask import request, jsonify
 
 from app.services.app_exceptions import CustomException, AdNotFound
-from app.services.crud_helper import create_ad_on_db, update_ad_on_db
+from app.services.crud_helper import create_ad_on_db, update_ad_on_db, delete_ad_on_db
 
 
 def add_ad():
@@ -21,9 +21,6 @@ def add_ad():
         print('insert_query_response', insert_query_response)
         if insert_query_response is not None:
             response_message = f"Ad posted successfully: the post is: {req_data['text']}"
-            # admin_panel_transaction_logger(response_code=str(10001), status_code=200, action=action,
-            #                                log_message=response_message
-            #                                )
             return jsonify({"message": response_message, "ad_id": insert_query_response}), 200
     except Exception as e:
         raise CustomException(' {}:could not post ad'.format(e), 406)
@@ -44,24 +41,36 @@ def edit_ad(ad_id):
         if result is None:
             print('result is none')
             AdNotFound.message = f"No update happened. The ad with {ad_id} id Does Not Exist."
-            # ms_error_logger(
-            #     response_code=str(10005),
-            #     status_code=404,
-            #     action=action,
-            #     message=AdNotFound.message
-            # )
             return jsonify(AdNotFound.message), 404
     except Exception as e:
         print(e)
         raise CustomException(' {}:اپدیت پست موفقیت آمیز نبود'.format(e), 406)
 
     message = f"ad updated successfully for user with id: {ad_id}"
-    # admin_panel_transaction_logger(response_code=str(10007), action=action, message=message)
     return jsonify({"message": message})
 
 
-def delete_ad():
-    pass
+def delete_ad(ad_id):
+    action = 'delete_member'
+    try:
+        result = delete_ad_on_db(ad_id)
+
+    except Exception as e:
+        raise CustomException(' {}:حذف پست موفقیت آمیز نبود'.format(e), 406)
+
+    if result is True:
+        message = f"ad with {ad_id} deleted successfully"
+        return jsonify({"message": message})
+
+    elif result is False:
+        AdNotFound.message = \
+            f"No record was found for post with id: {ad_id}"
+
+        return jsonify({"message": AdNotFound.message}), 404
+
+    else:
+        return jsonify(message=str(result))
+
 
 
 def add_cm():
