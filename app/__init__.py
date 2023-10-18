@@ -2,12 +2,12 @@ import traceback
 from flask import Flask, g, jsonify, request, Response
 from werkzeug.exceptions import HTTPException
 
-
 from app.extensions import ma, db, migrate
 from app.api.v1 import api as api_v1
 import config
 from app.services.app_exceptions import CustomException
 from app.api.v1.repositories.healthz import ads_health_check
+
 
 def create_app():
     app = Flask(__name__)
@@ -31,6 +31,7 @@ def create_app():
     @api_v1.before_request
     def relogin_if_needed():
         pass
+
     @api_v1.after_request
     def set_auth_header(response):
         response.headers['Access-Control-Expose-Headers'] = "Authorization"
@@ -47,10 +48,6 @@ def create_app():
 
         response.headers['Cache-Control'] = 'no-cache'
 
-        # prefix = 'api_v1.'
-        # endpoint = request.endpoint.replace(prefix, '')
-        # # if endpoint in openapi:
-        # #     response.headers['Is-Open-Api'] = True
         return response
 
     app.register_blueprint(api_v1, url_prefix='/api/v1')

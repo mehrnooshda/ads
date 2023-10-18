@@ -45,33 +45,17 @@ def login():
         .first()
 
     if not user:
-        # admin_panel_transaction_logger(response_code=910201,
-        #                                action=log_action,
-        #                                username=username,
-        #                                log_message="User or pass is wrong")
         raise AuthenticationException()
 
     if not check_password_hash(user.hashed_password, password):
         message = "Username or password is not correct"
-        # admin_panel_transaction_logger(response_code=910201,
-        #                                action=log_action,
-        #                                username=username,
-        #                                log_message=message)
         raise AuthenticationException(message=message)
 
     else:
-        # admin_panel_transaction_logger(response_code=910101,
-        #                                action=log_action,
-        #                                username=username,
-        #                                log_message="Successfully logged inn")
-
         return Response(
             response="Successfully logged in",
             headers={'Authorization': "Bearer " + generate_token(username),
                      'access-control-expose-headers': '*'},
             mimetype='application/json'
         )
-
-
-pass
 
