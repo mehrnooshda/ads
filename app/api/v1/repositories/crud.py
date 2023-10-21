@@ -2,6 +2,7 @@ import json
 
 from flask import request, jsonify
 
+from app.models.ad import AdSchema, Ad
 from app.services.app_exceptions import CustomException, AdNotFound
 from app.services.authorization import authorize
 from app.services.crud_helper import create_ad_on_db, update_ad_on_db, delete_ad_on_db, create_cm_on_db
@@ -96,8 +97,34 @@ def add_cm():
             return jsonify({"message": response_message}), 200
     except Exception as e:
         raise CustomException(' {}:could not post cm'.format(e), 406)
-    pass
+
+
+# def get_ad_and_cms():
+#     schema = AdSchema(many=True)
+#     ads = Ad.query.all()
+#     dump = schema.dump(ads)
+#     print(dump)
+#     for ad_number in range(len(dump)):
+#         for a in range(len(dump[ad_number]['ads_and_cms'])):
+#             dump[ad_number]['ads_and_cms'][a] = list(dump[ad_number]['ads_and_cms'][a])
+#     return jsonify(dump)
 
 
 def get_ad_and_cms():
-    pass
+    schema = AdSchema(many=True)
+    ads = Ad.query.all()
+    dump = schema.dump(ads)
+
+    # Iterate through the data to check and convert 'Ad' objects to dictionaries
+    for ad_number in range(len(dump)):
+        for a in range(len(dump[ad_number]['ads_and_cms'])):
+            item = dump[ad_number]['ads_and_cms'][a]
+            if isinstance(item, Ad):
+                # Convert the 'Ad' object to a dictionary with the attributes you want
+                dump[ad_number]['ads_and_cms'][a] = {
+                    'id': item.id,
+                    'text': item.text,
+                    # Include other attributes you want
+                }
+
+    return jsonify(dump)
