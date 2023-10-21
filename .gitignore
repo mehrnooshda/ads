@@ -105,4 +105,9 @@ keys/*
 *.DS_Store
 .vscode/
 
+# Ignore Alembic migration files
+/migrations/
+/alembic.ini
+/alembic/versions/
+
 

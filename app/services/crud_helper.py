@@ -1,5 +1,6 @@
 from app import db
 from app.models.ad import Ad
+from app.models.comment import Comment
 from app.services.app_exceptions import CustomException, UnknownError
 
 
@@ -42,3 +43,19 @@ def delete_ad_on_db(ad_id):
             return False
     except Exception as e:
         raise UnknownError
+
+
+def create_cm_on_db(text, user_id, ad_id):
+    action = 'add_ad_on_db'
+    try:
+
+        comment = Comment(text=text, user_id=user_id, ad_id=ad_id)
+        exists = Comment.query.filter(Comment.user_id == user_id, Comment.ad_id == ad_id).first()
+        if exists:
+            return False
+        db.session.add(comment)
+        db.session.commit()
+        return True
+
+    except Exception as e:
+        raise CustomException(' {}:error in posting cm'.format(e), 406)

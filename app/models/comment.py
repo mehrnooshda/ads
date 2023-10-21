@@ -8,7 +8,7 @@ class Comment(db.Model):
     text = db.Column(db.String(200))
 
     user = db.relationship('User')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('ad_user.id'))
 
     ad = db.relationship('Ad')
     ad_id = db.Column(db.Integer, db.ForeignKey('ad.id'))

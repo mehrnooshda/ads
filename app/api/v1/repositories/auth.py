@@ -40,14 +40,14 @@ def login():
     username = request_body['username']
     password = request_body['password']
 
-    user = User.query \
+    user_obj = User.query \
         .filter(User.username == request_body['username']) \
         .first()
 
-    if not user:
+    if not user_obj:
         raise AuthenticationException()
 
-    if not check_password_hash(user.hashed_password, password):
+    if not check_password_hash(user_obj.hashed_password, password):
         message = "Username or password is not correct"
         raise AuthenticationException(message=message)
 
