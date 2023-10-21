@@ -72,6 +72,12 @@ To use the API, follow these guidelines:
 
 The API endpoints are documented using the OpenAPI Specification. Refer to the API documentation for details on available endpoints, request formats, and responses.
 
+## Postman
+Postman Collection is provided in the route directory. There is no environment needed for calling APIs via postman 
+(The specifications are provided in the url paths!)
+
+
+
 ## Testing
 
 To run the unit tests for the project, use the following command:
