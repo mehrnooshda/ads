@@ -130,6 +130,46 @@
 					"response": []
 				},
 				{
+					"name": "Add Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1pbG9vQGdtYWlsLmNvbSIsImV4cCI6MTY5Nzg5NTEyOH0.ZO_vfoAMBIUxF0S4TqitPwLvMvZdcWQry1B6ynv1Da8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"cm txt\",\n    \"user_id\": \"1\",\n    \"ad_id\": \"90\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/add/comment",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"add",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Edit Ad",
 					"request": {
 						"method": "PUT",
