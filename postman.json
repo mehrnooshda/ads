@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "ff9a44e1-7093-4ccc-aec9-bf7b1a22e116",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28194975"
+	},
+	"item": [
+		{
+			"name": "ads",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "chiz",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"miloo@gmail.com\",\n    \"password\": \"123456\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/register",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "chiz",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"miloo@gmail.com\",\n    \"password\": \"123456\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Ad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1pbG9vQGdtYWlsLmNvbSIsImV4cCI6MTY5NzY0NDI1OH0.0JTTvnBjs41Moe9mpo9V3C9fge6JeUNSTM4TUswxoG0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"advertisment text3\",\n    \"user_id\": \"1\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/add/ad",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"add",
+								"ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Ad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1pbG9vQGdtYWlsLmNvbSIsImV4cCI6MTY5NzY0NDI1OH0.0JTTvnBjs41Moe9mpo9V3C9fge6JeUNSTM4TUswxoG0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"edited advertisment text2\",\n    \"ad_id\": \"1\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/edit/ad/:ad_id",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"edit",
+								"ad",
+								":ad_id"
+							],
+							"variable": [
+								{
+									"key": "ad_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ad",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1pbG9vQGdtYWlsLmNvbSIsImV4cCI6MTY5NzY0NDI1OH0.0JTTvnBjs41Moe9mpo9V3C9fge6JeUNSTM4TUswxoG0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:6540/api/v1/ads/delete/ad/:ad_id",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6540",
+							"path": [
+								"api",
+								"v1",
+								"ads",
+								"delete",
+								"ad",
+								":ad_id"
+							],
+							"variable": [
+								{
+									"key": "ad_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
